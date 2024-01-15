@@ -1,10 +1,9 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-import { AuthProvider } from './useAuth'
-import { keycloak } from './keycloak'
-
-const inter = Inter({ subsets: ['latin'] })
+import "./data-tables-css.css";
+import "./satoshi.css";
+import type { Metadata } from 'next'
+import { AuthProvider } from '@/components/SessionProvider'
+import { getServerSession } from 'next-auth'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,11 +16,12 @@ export  default async function RootLayout({
   children: React.ReactNode
 }) {
 
+  const session = await getServerSession()
 
   return (
     <html lang="en">
-      <AuthProvider>
-        <body className={inter.className}>{children}</body>
+      <AuthProvider session={session}>
+        <body>{children}</body>
       </AuthProvider>
     </html>
   )

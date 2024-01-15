@@ -35,7 +35,7 @@ const init = () => {
      _kcInstance = kcInstance
   
     return kcInstance.init({
-      onLoad: 'check-sso', 
+      onLoad: 'check-sso',
       redirectUri: "http://localhost:3001/api/auth",
       responseMode: 'query',
       checkLoginIframe: false
